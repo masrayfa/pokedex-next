@@ -1,11 +1,9 @@
-import Head from 'next/head'
 import type { ReactNode } from 'react'
 import Header from './Header'
-import PokemonCard from './PokemonCard'
 
 interface Props {
   children: ReactNode
-  className: string
+  className?: string
 }
 
 const Layout: React.FC<Props> = (props) => {

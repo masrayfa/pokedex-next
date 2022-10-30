@@ -1,8 +1,8 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Header from '../components/Header'
+import Head from 'next/head'
+import Link from 'next/link'
 import Layout from '../components/Layout'
 import PokemonCard from '../components/PokemonCard'
-import { PokemonDetailProps } from '../typings'
 
 interface PokeProps {
   name: string
@@ -12,22 +12,28 @@ interface PokeProps {
 const Home: NextPage<PokeProps[]> = ({
   arrayOfPokemons,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log('array of pokemons', arrayOfPokemons)
   return (
-    <Layout className="md:grid md:grid-cols-3 gap-3 space-y-3 p-7">
-      {arrayOfPokemons.map((poke: any, index: number) => {
-        return (
-          <div key={index}>
-            <PokemonCard
-              id={index + 1}
-              name={poke.name}
-              sprites={poke.sprites.other['official-artwork'].front_default}
-              types={poke.types}
-            />
-          </div>
-        )
-      })}
-    </Layout>
+    <>
+      <Head>
+        <title>Pokedex</title>
+      </Head>
+      <Layout className="md:grid md:grid-cols-3 gap-3 space-y-3 p-7">
+        {arrayOfPokemons.map((poke: any) => {
+          return (
+            <div key={poke.id}>
+              <Link href={`/pokemon/${poke.name}`}>
+                <PokemonCard
+                  id={poke.id}
+                  name={poke.name}
+                  sprites={poke.sprites.other['official-artwork'].front_default}
+                  types={poke.types[0].type.name}
+                />
+              </Link>
+            </div>
+          )
+        })}
+      </Layout>
+    </>
   )
 }
 
