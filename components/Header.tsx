@@ -3,10 +3,10 @@ import HeaderBlur from './HeaderBlur'
 import Link from 'next/link'
 
 interface HeaderProps {
-  leftIcon: ReactElement
+  leftIcon?: ReactElement
   title: string
-  firstRightIcon: ReactElement
-  secondRightIcon: ReactElement
+  firstRightIcon?: ReactElement
+  secondRightIcon?: ReactElement
 }
 
 function Header({ title }: HeaderProps) {
