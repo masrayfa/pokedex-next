@@ -9,7 +9,7 @@ interface Props {
 const Layout: React.FC<Props> = (props) => {
   const { children, className } = props
   return (
-    <div className="bg-[#1E78BC]">
+    <div className="bg-[#19202A]">
       <Header title="Pokedex" />
       <main className={`${className}`}>{children}</main>
       <footer></footer>

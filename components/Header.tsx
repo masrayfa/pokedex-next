@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import HeaderBlur from './HeaderBlur'
+import Link from 'next/link'
 
 interface HeaderProps {
   leftIcon: ReactElement
@@ -32,22 +33,28 @@ function Header({ title }: HeaderProps) {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#385CB5] rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-blue-400 rounded-box w-52"
             >
               <li>
-                <a>Homepage</a>
+                <Link href={'/'}>
+                  <p>Home</p>
+                </Link>
               </li>
               <li>
-                <a>Portfolio</a>
+                <p>Your Pokemons</p>
               </li>
               <li>
-                <a>About</a>
+                <Link href={'/about'}>
+                  <p>About</p>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost normal-case text-xl">{title}</a>
+          <Link href={'/'}>
+            <h1 className="btn btn-ghost normal-case text-xl">{title}</h1>
+          </Link>
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">

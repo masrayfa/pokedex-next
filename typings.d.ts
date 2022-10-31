@@ -1,7 +1,7 @@
 export interface PokemonCardProps {
   id: number
   name: string
-  types: string
+  types: string[]
   sprites: string
 }
 export interface Info {

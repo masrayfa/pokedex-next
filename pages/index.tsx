@@ -17,16 +17,17 @@ const Home: NextPage<PokeProps[]> = ({
       <Head>
         <title>Pokedex</title>
       </Head>
-      <Layout className="md:grid md:grid-cols-3 gap-3 space-y-3 p-7">
+      <Layout className="md:grid md:grid-cols-3 md:gap-3 p-7">
         {arrayOfPokemons.map((poke: any) => {
           return (
-            <div key={poke.id}>
+            <div key={poke.id} className="mb-4 md:mb-0">
               <Link href={`/pokemon/${poke.name}`}>
                 <PokemonCard
                   id={poke.id}
                   name={poke.name}
                   sprites={poke.sprites.other['official-artwork'].front_default}
                   types={poke.types[0].type.name}
+                  intent={poke.types[0].type.name}
                 />
               </Link>
             </div>
@@ -47,7 +48,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return data
   }
 
-  for (let i: number = 1; i <= 20; i++) {
+  for (let i: number = 1; i <= 50; i++) {
     let data = await getPokeApi(i)
     arrayOfPokemons.push(data)
   }
