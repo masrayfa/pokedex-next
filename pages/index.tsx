@@ -3,10 +3,32 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/Layout'
 import PokemonCard from '../components/PokemonCard'
+import { Pokemon } from '../typings'
 
 interface PokeProps {
   name: string
   id: number
+}
+
+export interface PokemonDataProps {
+  id: number
+  name: string
+  types: [
+    {
+      type: {
+        name: string
+      }
+    }
+  ]
+  sprites: string
+  stats?: [
+    {
+      base_stat: number
+      stat: {
+        name: string
+      }
+    }
+  ]
 }
 
 const Home: NextPage<PokeProps[]> = ({
@@ -47,8 +69,49 @@ export const getStaticProps: GetStaticProps = async () => {
     const data = await res.json()
     return data
   }
+  // const getAllPokeApi = async () => {
+  //   const res = await fetch(
+  //     `https://pokeapi.co/api/v2/pokemon?limit=100&offset=0`
+  //   )
+  //   const data = await res.json()
+  //   const pokemonData: PokemonDataProps = data.results.forEach(
+  //     (obj: PokemonDataProps) => {
+  //       Object.entries(obj).forEach(async ([key, value]) => {
+  //         console.log(value)
+  //         /* const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${value.name}`) */
+  //       })
+  //     }
+  //   )
+  // }
+  // getAllPokeApi()
 
-  for (let i: number = 1; i <= 50; i++) {
+  // const fetchPokemon = async (pokemon: string) => {
+  //   const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+  //
+  //   try {
+  //     const res = await fetch(url)
+  //     const data: PokemonDataProps = await res.json()
+  //     return data
+  //   } catch (e) {
+  //     console.error(e)
+  //   }
+  // }
+  //
+  // const fetchListOfPokemon = async (page: number) => {
+  //   const url = `https://pokeapi.co/api/v2/pokemon?limit=${page}offset=9`
+  //
+  //   const res = await fetch(url)
+  //   const data = await res.json()
+  //
+  //   const promises = data.results.map(
+  //     async (poke: { name: string }) => await fetchPokemon(poke.name)
+  //   ).data
+  //
+  //   const pokemonList = Promise.all(promises)
+  //   return pokemonList
+  // }
+
+  for (let i: number = 1; i <= 20; i++) {
     let data = await getPokeApi(i)
     arrayOfPokemons.push(data)
   }

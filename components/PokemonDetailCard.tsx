@@ -49,7 +49,7 @@ const PokemonDetailCard = ({
         </h1>
         <h2 className="text-xl text-white">#{id}</h2>
         <Image src={spritesImage} alt={name} width="300" height="300" />
-        <li className="bg-white/50 grid grid-cols-3 p-3 gap-4 rounded-lg justify-items-center">
+        <li className="bg-white/50 grid grid-cols-3 p-7 gap-4 rounded-lg justify-items-center">
           <ul>
             <p>
               {pokeType.map((type, index) => {

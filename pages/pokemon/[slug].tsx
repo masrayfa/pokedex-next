@@ -27,9 +27,9 @@ const pokemon = ({
 }) => {
   return (
     <div className="mx-auto">
-      <Layout className="p-20">
+      <Layout className="md:p-20 p-16">
         <PokemonDetailCard
-          intent={colorTypes}
+          intent={`${colorTypes}`}
           id={id}
           name={name}
           spritesImage={sprites}
@@ -53,7 +53,6 @@ export default pokemon
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`)
   const { results }: PokemonProps = await res.json()
-  console.log('iki results', results)
 
   return {
     paths: results.map((poke) => {
@@ -74,11 +73,7 @@ export const getStaticProps = async ({
 }) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.slug}`)
   const data: Pokemon = await res.json()
-  console.log('iki res static', data)
-  console.log(
-    'iki gambar',
-    data.sprites.other?.['official-artwork'].front_default
-  )
+
   return {
     props: {
       id: data.id,
