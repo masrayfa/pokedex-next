@@ -22,14 +22,18 @@ const pokemon = ({
   sprites: string
   weight: number
   height: number
-  type: string[]
+  type: [
+    {
+      name: string
+    }
+  ]
   colorTypes: string
 }) => {
   return (
     <div className="mx-auto">
       <Layout className="md:p-20 p-16">
         <PokemonDetailCard
-          intent={`${colorTypes}`}
+          colorTypes={colorTypes}
           id={id}
           name={name}
           spritesImage={sprites}
