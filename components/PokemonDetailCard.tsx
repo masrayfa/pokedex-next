@@ -26,7 +26,7 @@ export const cardStyles = cva(['flex p-5 rounded-lg'], {
       fairy: ['bg-[#845C88]'],
       bug: ['bg-[#5B712D]'],
       water: ['bg-[#3C6392]'],
-      physic: ['bg-[#883C59]'],
+      psychic: ['bg-[#883C59]'],
       fighting: ['bg-[#938E82]'],
       rock: ['bg-[#73715B]'],
       flying: ['bg-[#C7B993]'],

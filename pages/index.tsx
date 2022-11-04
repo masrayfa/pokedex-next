@@ -111,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
   //   return pokemonList
   // }
 
-  for (let i: number = 1; i <= 20; i++) {
+  for (let i: number = 1; i <= 50; i++) {
     let data = await getPokeApi(i)
     arrayOfPokemons.push(data)
   }
