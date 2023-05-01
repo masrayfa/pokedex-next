@@ -1,34 +1,34 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import Layout from '../components/Layout'
-import PokemonCard from '../components/PokemonCard'
-import { Pokemon } from '../typings'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import Layout from '../components/Layout';
+import PokemonCard from '../components/PokemonCard';
+import { Pokemon } from '../typings';
 
 interface PokeProps {
-  name: string
-  id: number
+  name: string;
+  id: number;
 }
 
 export interface PokemonDataProps {
-  id: number
-  name: string
+  id: number;
+  name: string;
   types: [
     {
       type: {
-        name: string
-      }
+        name: string;
+      };
     }
-  ]
-  sprites: string
+  ];
+  sprites: string;
   stats?: [
     {
-      base_stat: number
+      base_stat: number;
       stat: {
-        name: string
-      }
+        name: string;
+      };
     }
-  ]
+  ];
 }
 
 const Home: NextPage<PokeProps[]> = ({
@@ -37,7 +37,7 @@ const Home: NextPage<PokeProps[]> = ({
   return (
     <>
       <Head>
-        <title>Pokedex</title>
+        <title>This is Pokedex for You</title>
       </Head>
       <Layout className="md:grid md:grid-cols-3 md:gap-3 p-7">
         {arrayOfPokemons.map((poke: any) => {
@@ -53,22 +53,22 @@ const Home: NextPage<PokeProps[]> = ({
                 />
               </Link>
             </div>
-          )
+          );
         })}
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  let arrayOfPokemons = []
+  let arrayOfPokemons = [];
   const getPokeApi = async (i: number) => {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-    const data = await res.json()
-    return data
-  }
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+    const data = await res.json();
+    return data;
+  };
   // const getAllPokeApi = async () => {
   //   const res = await fetch(
   //     `https://pokeapi.co/api/v2/pokemon?limit=100&offset=0`
@@ -112,12 +112,12 @@ export const getStaticProps: GetStaticProps = async () => {
   // }
 
   for (let i: number = 1; i <= 50; i++) {
-    let data = await getPokeApi(i)
-    arrayOfPokemons.push(data)
+    let data = await getPokeApi(i);
+    arrayOfPokemons.push(data);
   }
   return {
     props: {
       arrayOfPokemons,
     },
-  }
-}
+  };
+};
